@@ -1,11 +1,17 @@
 const { createStore } = require('redux');
-
+const uuid = require('uuid/v4');
 
 // #1 write oyut an example/default version of my
 // application state
 
 const defaultState = {
-    count: 0
+    // count: 0
+    counters: [
+        {
+            id: uuid(),
+            count: 0
+        }
+    ]
 };
 
 // #2 - Describe the ways that state can change
