@@ -110,6 +110,7 @@ const store = createStore(counter);
 store.subscribe(() => {
     const theState = store.getState();
     console.log(`The state is now ${theState.counters}`);
+    console.log(theState);
 });
 
 module.exports = {
