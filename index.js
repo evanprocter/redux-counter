@@ -57,8 +57,24 @@ const counter = (state=defaultState, action) => {
         case ACTION_INC.type:
         // if it's 'INCREMENT', return a new state object with the count +1
             return {
-                count: state.count + 1
+                // count: state.count + 1
+                // we want to return the array of counters
+                // but we want to modify the one where its id === action.id
+                counters: state.counters.map(oneCounter => {
+                    if (oneCounter.id === action.id) {
+                        // return a new version of oneCounter
+                        return {
+                            ...oneCounter,
+                            count: oneCounter.count + 1
+                        }
+                    } else {
+                        // these are not the droids i'm looking for
+                        return oneCounter;
+                    }
+                })
             };
+            // break; // no need to break , since we're returning
+            // if you're not returning, use break to make sure other casses arent triggered
 
         case ACTION_DEC.type:
         // if it's 'DECREMENT', return a new state object with the count -1
