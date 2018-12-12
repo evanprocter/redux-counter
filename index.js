@@ -1,9 +1,7 @@
 const { createStore } = require('redux');
 const uuid = require('uuid/v4');
 
-// #1 write oyut an example/default version of my
-// application state
-
+// #1 write oyut an example/default version of my application state
 const defaultState = {
     // count: 0
     counters: [
@@ -30,6 +28,25 @@ const ACTION_INC = {
 const ACTION_DEC = {
     type: 'DECREMENT'
 };
+
+// "Action Creators"
+// When you need to configure an action, write a function
+const incrementCounter = (id) => {
+    return {
+        ...ACTION_INC,
+        id
+    }
+};
+// example: store.dispatch(incrementCounter('abc-123-do-re-me'))
+
+const decrementCounter = (id) => {
+    return {
+        ...ACTION_DEC,
+        id
+    }
+};
+// example: store.dispatch(decrementCounter('abc-123-do-re-me'))
+
 
 // #3 - Write a pure function tha accepts the current state 
 // and an action, then returns the new version state
